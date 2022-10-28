@@ -1,9 +1,9 @@
 ---
-import Navbar from "../Navbar.astro";
+import Navbar from "../Navbar.jsx";
 ---
 
 <header class="header h-with__nav">
-  <Navbar />
+  <Navbar client:load />
   <section class="container header__title-container">
     <h1>Invit♥Arte</h1>
     <h2>Crea invitaciones a <span>tu estilo.</span></h2>
