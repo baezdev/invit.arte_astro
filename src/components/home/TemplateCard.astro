@@ -1,0 +1,15 @@
+---
+const { title, img } = Astro.props;
+---
+
+<div class="fondo">
+  <article class="tarjetaP tarjetaS">
+    <header class="cabeceraP">
+      <img src={img} alt={title} class="plantilla" />
+    </header>
+    <h2 class="costo">{title}</h2>
+    <a href="#" class="button boton flex botonP">
+      Usa esta plantilla<i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </article>
+</div>

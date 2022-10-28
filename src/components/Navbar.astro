@@ -1,0 +1,77 @@
+<nav class="navbar">
+  <a href="/" class="navbar__logo">
+    <img src="/images/logo.svg" alt="Logo Invit-Arte" />
+  </a>
+  <button class="button__menu">
+    <i class="fa-solid fa-bars-staggered"></i>
+  </button>
+  <div class="navbar__menu">
+    <ul class="navbar__menu-container">
+      <li class="navbar__menu-search">
+        <input type="search" placeholder="Buscar en Invit-Arte" />
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script>
+  export const showMenu = () => {
+    const buttonMenu = document.querySelector(".button__menu");
+    const navbarMenu = document.querySelector(".navbar__menu");
+    const x = `<i class="fa-solid fa-x"></i>`;
+    const menu = `<i class="fa-solid fa-bars-staggered"></i>`;
+
+    buttonMenu.addEventListener("click", () => {
+      navbarMenu.classList.toggle("showMenu");
+      if (navbarMenu.classList.contains("showMenu")) {
+        buttonMenu.innerHTML = x;
+      } else {
+        buttonMenu.innerHTML = menu;
+      }
+    });
+  };
+
+  export const generateLinks = () => {
+    const navbarMenuContainer = document.querySelector(
+      ".navbar__menu-container"
+    );
+    const links = [
+      {
+        text: "acceder",
+        url: "/login/",
+      },
+      {
+        text: "contacto",
+        url: "/contact/",
+      },
+      {
+        text: "sobre nosotros",
+        url: "/about/",
+      },
+      {
+        text: "servicios",
+        url: "/services/",
+      },
+      {
+        text: "diseños",
+        url: "/designs/",
+      },
+      {
+        text: "inicio",
+        url: "/",
+      },
+    ];
+
+    links.map(({ text, url }) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = url;
+      a.textContent = text;
+      li.appendChild(a);
+      navbarMenuContainer.appendChild(li);
+    });
+  };
+
+  generateLinks();
+  showMenu();
+</script>
