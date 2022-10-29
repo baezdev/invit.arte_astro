@@ -4,11 +4,11 @@ import { FormInput } from "./FormInput";
 
 export const ContactForm = () => {
   return (
-    <div class="form">
+    <div className="form">
       <h1>Envíanos un mensaje</h1>
       <p>Te contestaremos lo antes posible.</p>
-      <form class="form__inputs margin__top-md">
-        <div class="margin__bottom-md">
+      <form className="form__inputs margin__top-md">
+        <div className="margin__bottom-md">
           <FormInput
             type="text"
             name="name"
@@ -16,7 +16,7 @@ export const ContactForm = () => {
             icon="fa-solid fa-user"
           />
         </div>
-        <div class="margin__bottom-md">
+        <div className="margin__bottom-md">
           <FormInput
             type="email"
             name="email"
@@ -25,13 +25,13 @@ export const ContactForm = () => {
           />
         </div>
         <textarea
-          class="form__textarea margin__bottom-lg"
+          className="form__textarea margin__bottom-lg"
           name="message"
           id=""
           rows="7"
           placeholder="Mensaje"
         ></textarea>
-        <div class="form__buttons">
+        <div className="form__buttons">
           <FormButton text="Enviar" icon="fa-solid fa-paper-plane" />
         </div>
       </form>
