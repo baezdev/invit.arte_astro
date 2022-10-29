@@ -643,11 +643,13 @@ button {
   outline: none;
 }
 
-.form__input.form__input-error input {
+.form__input.form__input-error input,
+.form__input-statusIcon {
   color: #d23131;
 }
 
-.form__input.form__input-error .form__input-status {
+.form__input.form__input-error .form__input-status,
+.form__input-statusIcon {
   color: #d23131;
 }
 
@@ -1563,25 +1565,25 @@ button {
   justify-content: space-between;
 }
 
-.user__card p{
+.user__card p {
   margin-top: 0;
 }
 
-.user__card .user__card-actions{
+.user__card .user__card-actions {
   display: flex;
   gap: 2rem;
   justify-content: flex-end;
   margin-top: 3rem;
 }
 
-.user__card-action{
+.user__card-action {
   padding: 1rem;
   font-size: 2rem;
   border-radius: 6px;
   border: none;
 }
 
-.user__card-action.edit{
+.user__card-action.edit {
   background: var(--mint);
 }
 
@@ -3178,18 +3180,18 @@ button {
   justify-content: space-between;
 }
 
-.user__card p{
+.user__card p {
   margin-top: 0;
 }
 
-.user__card .user__card-actions{
+.user__card .user__card-actions {
   display: flex;
   gap: 2rem;
   justify-content: flex-end;
   margin-top: 3rem;
 }
 
-.user__card-action{
+.user__card-action {
   padding: 1rem;
   font-size: 2rem;
   border-radius: 6px;
@@ -3197,11 +3199,11 @@ button {
   color: var(--darkGreen);
 }
 
-.user__card-action.edit{
+.user__card-action.edit {
   background: var(--mint);
 }
 
-.user__card-action.delete{
+.user__card-action.delete {
   background: var(--yellow);
 }
 
