@@ -1,12 +1,10 @@
 import { useState } from "react";
+import { signOut } from "../helpers/auth/signOut";
+import useUser from "../hooks/useUser";
 
 const Navbar = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
   const links = [
-    {
-      text: "acceder",
-      url: "/login/",
-    },
     {
       text: "contacto",
       url: "/contact/",
@@ -28,6 +26,9 @@ const Navbar = () => {
       url: "/",
     },
   ];
+
+  const user = useUser();
+
   return (
     <nav className="navbar">
       <a href="/" className="navbar__logo">
@@ -48,6 +49,16 @@ const Navbar = () => {
             <button>
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
+          </li>
+          <li>
+            {user ? (
+              <button onClick={signOut}>
+                Cerrar Sesión{" "}
+                <span className="button__signOut-name">({user.name})</span>
+              </button>
+            ) : (
+              <a href="/login/">acceder</a>
+            )}
           </li>
           {links.map(({ text, url }) => (
             <li key={text}>
