@@ -5,7 +5,6 @@ export const FormInput = ({
   name,
   placeholder,
   icon,
-  secIcon,
   onChange,
   eventValidation,
   value,
@@ -60,7 +59,7 @@ export const FormInput = ({
           value={value}
         />
         <span className="form__input-status">
-          <i className={secIcon}></i>
+          {error !== "" && <i className="fa-regular fa-circle-xmark"></i>}
         </span>
       </div>
       <span className="form__input-message">{error}</span>

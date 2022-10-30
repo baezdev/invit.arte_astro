@@ -1,4 +1,5 @@
 import validator from "validator";
+import Swal from "sweetalert2";
 
 import { useForm } from "../../hooks/useForm";
 
@@ -15,7 +16,7 @@ const validFields = {
   password: false,
 };
 
-const validationsForm = (form) => {
+const validationsForm = (form, e) => {
   const errors = {};
 
   if (validator.isEmpty(form.email)) {
@@ -42,19 +43,24 @@ const validationsForm = (form) => {
 };
 
 export const FormLogin = () => {
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleEventValidation,
-  } = useForm(initialForms, validationsForm);
+  const { form, errors, handleChange, handleEventValidation } = useForm(
+    initialForms,
+    validationsForm
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
-    console.log(validFields);
+    if (!validFields.email || !validFields.password) {
+      Swal.fire({
+        title: "Algo anda mal",
+        icon: "error",
+        text: "Revisa tus datos",
+        customClass: "fs-lg",
+      });
+      return;
+    }
+
+    console.log("valido");
   };
 
   return (
@@ -76,7 +82,6 @@ export const FormLogin = () => {
             name="email"
             placeholder="Correo Electrónico"
             icon="fa-solid fa-envelope"
-            secIcon="fa-regular fa-circle-check"
             onChange={handleChange}
             eventValidation={handleEventValidation}
             value={form.email}

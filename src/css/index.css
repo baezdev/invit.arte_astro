@@ -222,6 +222,28 @@ img {
   }
 }
 
+.fs-lg {
+  font-size: 1.7rem !important;
+}
+
+.fs-lg h2 {
+  font-weight: 700;
+}
+
+.fs-lg div {
+  font-weight: 500;
+}
+
+.fs-lg button {
+  background: var(--darkGreen) !important;
+  color: var(--yellow) !important;
+  border: 3px solid var(--mint) !important;
+  outline: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 6px !important;
+}
+
 /***** Navbar *****/
 .navbar {
   width: 100%;
