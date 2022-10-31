@@ -5,6 +5,7 @@ import { useForm } from "../../hooks/useForm";
 
 import { FormInput } from "./FormInput";
 import { FormButton } from "./FormButton";
+import { loginWithEmail } from "../../helpers/auth/loginWithEmail";
 
 const initialForms = {
   email: "",
@@ -53,14 +54,39 @@ export const FormLogin = () => {
     if (!validFields.email || !validFields.password) {
       Swal.fire({
         title: "Algo anda mal",
-        icon: "error",
+        icon: "warning",
         text: "Revisa tus datos",
         customClass: "fs-lg",
       });
       return;
     }
 
-    console.log("valido");
+    loginWithEmail(form.email, form.password).then((res) => {
+      if (res.error) {
+        Swal.fire({
+          title: "Hubo un error",
+          icon: "error",
+          text: `${
+            res.error.message === "Invalid login credentials" &&
+            "Credenciales de acceso inválidas o no estas registrado 💔"
+          }`,
+          customClass: "fs-lg",
+        });
+        return;
+      }
+
+      Swal.fire({
+        title: "Bienvenid@ de nuevo",
+        icon: "success",
+        customClass: "fs-lg",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 500);
+        }
+      });
+    });
   };
 
   return (
