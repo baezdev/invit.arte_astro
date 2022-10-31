@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUserLogged } from "../helpers/auth/getUserLogged";
 import { signOut } from "../helpers/auth/signOut";
-import useUser from "../hooks/useUser";
 
 const Navbar = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -27,7 +27,11 @@ const Navbar = () => {
     },
   ];
 
-  const user = useUser();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUserLogged().then((data) => setUser(data));
+  }, []);
 
   return (
     <nav className="navbar">
