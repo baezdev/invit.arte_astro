@@ -1,0 +1,81 @@
+---
+import TemplateCard from "../components/TemplateCard.astro";
+import Layout from "../layouts/Layout.astro";
+import SubPageLayout from "../layouts/SubPageLayout.astro";
+
+const templates = [
+  {
+    title: "Baby Shower",
+    img: "/images/baby.webp",
+  },
+  {
+    title: "Bautizo",
+    img: "/images/bautizo.webp",
+  },
+  {
+    title: "Boda",
+    img: "/images/boda.webp",
+  },
+  {
+    title: "Cumpleaños",
+    img: "/images/cumple.webp",
+  },
+  {
+    title: "Despedida de solter@",
+    img: "/images/despedida.webp",
+  },
+  {
+    title: "Graduación",
+    img: "/images/graduacion.webp",
+  },
+  {
+    title: "XV años",
+    img: "/images/xv.webp",
+  },
+];
+---
+
+<Layout title="Invit💛Arte (Diseños)">
+  <SubPageLayout title="Plantillas Disponibles">
+    <main>
+      <section class="sTarjetas">
+        <div class="contenedor">
+          <div class="contenedorP contPlantillas">
+            {templates.map((template) => <TemplateCard {...template} />)}
+            <section class="imagen-light">
+              <img src="/images/cerrar.svg" alt="" class="close" />
+              <img src="" alt="" class="agregarImg" />
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </SubPageLayout>
+</Layout>
+<script>
+  const imagenes = document.querySelectorAll(".plantilla");
+  const imagenesLight = document.querySelector(".agregarImg");
+  const contenedorLight = document.querySelector(".imagen-light");
+  const flecha = document.querySelector(".button__top");
+
+  imagenes.forEach((imagen) => {
+    imagen.addEventListener("click", () => {
+      aparecerImg(imagen.getAttribute("src"));
+    });
+  });
+
+  contenedorLight.addEventListener("click", (e) => {
+    if (e.target !== imagenesLight) {
+      contenedorLight.classList.toggle("show");
+      imagenesLight.classList.toggle("showImage");
+      flecha.style.display = "";
+    }
+  });
+
+  const aparecerImg = (imagen) => {
+    imagenesLight.src = imagen;
+    contenedorLight.classList.toggle("show");
+    imagenesLight.classList.toggle("showImage");
+    flecha.style.display = "none";
+  };
+</script>

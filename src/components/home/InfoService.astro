@@ -1,0 +1,30 @@
+---
+import InfoServiceCard from "./InfoServiceCard.astro";
+
+const services = [
+  {
+    title: "Digital",
+    text: "Accede a tus diseños desde cualquier dispositivo electrónico.",
+    icon: "fa-solid fa-mobile-screen-button",
+  },
+  {
+    title: "Diseño",
+    text: "Crea tu propio diseño, envíanos tus ideas y nosotros nos encargamos de hacerlas realidad.",
+    icon: "fa-solid fa-pen-fancy",
+  },
+  {
+    title: "Ecológico",
+    text: "Vive una nueva experiencia, cuidando nuestro planeta ¡Dile adiós al papel!",
+    icon: "fa-solid fa-earth-americas",
+  },
+];
+---
+
+<section class="info__service-container container margin__bottom">
+  <h4 class="subtitle">La mejor opción para ti.</h4>
+  <div class="info__service">
+    <div class="info__service-cards">
+      {services.map((service) => <InfoServiceCard {...service} />)}
+    </div>
+  </div>
+</section>
