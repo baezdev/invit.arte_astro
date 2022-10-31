@@ -1,9 +1,11 @@
 import validator from "validator";
+import Swal from "sweetalert2";
 
 import { useForm } from "../../hooks/useForm";
 
 import { FormInput } from "./FormInput";
 import { FormButton } from "./FormButton";
+import { loginWithEmail } from "../../helpers/auth/loginWithEmail";
 
 const initialForms = {
   email: "",
@@ -15,7 +17,7 @@ const validFields = {
   password: false,
 };
 
-const validationsForm = (form) => {
+const validationsForm = (form, e) => {
   const errors = {};
 
   if (validator.isEmpty(form.email)) {
@@ -42,19 +44,49 @@ const validationsForm = (form) => {
 };
 
 export const FormLogin = () => {
-  const {
-    form,
-    errors,
-    loading,
-    response,
-    handleChange,
-    handleEventValidation,
-  } = useForm(initialForms, validationsForm);
+  const { form, errors, handleChange, handleEventValidation } = useForm(
+    initialForms,
+    validationsForm
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
-    console.log(validFields);
+    if (!validFields.email || !validFields.password) {
+      Swal.fire({
+        title: "Algo anda mal",
+        icon: "warning",
+        text: "Revisa tus datos",
+        customClass: "fs-lg",
+      });
+      return;
+    }
+
+    loginWithEmail(form.email, form.password).then((res) => {
+      if (res.error) {
+        Swal.fire({
+          title: "Hubo un error",
+          icon: "error",
+          text: `${
+            res.error.message === "Invalid login credentials" &&
+            "Credenciales de acceso inválidas o no estas registrado 💔"
+          }`,
+          customClass: "fs-lg",
+        });
+        return;
+      }
+
+      Swal.fire({
+        title: "Bienvenid@ de nuevo",
+        icon: "success",
+        customClass: "fs-lg",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 500);
+        }
+      });
+    });
   };
 
   return (
@@ -76,7 +108,6 @@ export const FormLogin = () => {
             name="email"
             placeholder="Correo Electrónico"
             icon="fa-solid fa-envelope"
-            secIcon="fa-regular fa-circle-check"
             onChange={handleChange}
             eventValidation={handleEventValidation}
             value={form.email}
