@@ -1,5 +1,5 @@
 ---
-const { title, img } = Astro.props;
+const { title, img, id } = Astro.props;
 ---
 
 <div class="fondo">
@@ -8,7 +8,7 @@ const { title, img } = Astro.props;
       <img src={img} alt={title} class="plantilla" />
     </header>
     <h2 class="costo">{title}</h2>
-    <a href="#" class="button boton flex botonP">
+    <a href={`/create-invitation?id=${id}`} class="button boton flex botonP">
       Usa esta plantilla<i class="fa-solid fa-arrow-right"></i>
     </a>
   </article>
