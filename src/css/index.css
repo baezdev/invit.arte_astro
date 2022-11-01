@@ -659,6 +659,32 @@ button {
   outline: none;
 }
 
+.form__input-container-select{
+  width: 100%;
+  display: block;
+}
+
+.form__input-container-select{
+  border-bottom: 2px solid var(--gray);
+}
+
+select {
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+select:focus{
+  outline: none;
+}
+
+.message-logged{
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .form__input:focus-within,
 .form__textarea:focus {
   border-bottom: 2px solid var(--mint);
@@ -3174,59 +3200,18 @@ button {
   font-size: 4rem;
 }
 
-/***** Admin *****/
+/***** Create Invitation *****/
 
-.users {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5rem;
-  margin: 4rem auto;
-}
-
-.user__card-container {
-  padding: 0.5rem;
-  border-radius: 8px;
-  background: linear-gradient(90rad, var(--mint), var(--yellow));
-}
-
-.user__card {
-  padding: 2rem 3rem;
-  border-radius: 6px;
-  background: var(--darkGreen);
-  color: var(--white);
-  font-size: 2.2rem;
-  font-weight: 700;
-  height: 100%;
+.form__create {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 8rem;
+  align-items: center;
+  margin: 5rem auto;
 }
 
-.user__card p {
-  margin-top: 0;
-}
-
-.user__card .user__card-actions {
-  display: flex;
-  gap: 2rem;
-  justify-content: flex-end;
-  margin-top: 3rem;
-}
-
-.user__card-action {
-  padding: 1rem;
-  font-size: 2rem;
-  border-radius: 6px;
-  border: none;
-  color: var(--darkGreen);
-}
-
-.user__card-action.edit {
-  background: var(--mint);
-}
-
-.user__card-action.delete {
-  background: var(--yellow);
+.create__seccion-image {
+  width: 550px;
+  animation: up-and-down 1s infinite;
 }
 
 /***** Animaciones *****/

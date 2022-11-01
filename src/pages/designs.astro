@@ -41,7 +41,11 @@ const templates = [
       <section class="sTarjetas">
         <div class="contenedor">
           <div class="contenedorP contPlantillas">
-            {templates.map((template) => <TemplateCard {...template} />)}
+            {
+              templates.map((template, i) => (
+                <TemplateCard id={i + 1} {...template} />
+              ))
+            }
             <section class="imagen-light">
               <img src="/images/cerrar.svg" alt="" class="close" />
               <img src="" alt="" class="agregarImg" />
@@ -68,7 +72,6 @@ const templates = [
     if (e.target !== imagenesLight) {
       contenedorLight.classList.toggle("show");
       imagenesLight.classList.toggle("showImage");
-      flecha.style.display = "";
     }
   });
 
@@ -76,6 +79,5 @@ const templates = [
     imagenesLight.src = imagen;
     contenedorLight.classList.toggle("show");
     imagenesLight.classList.toggle("showImage");
-    flecha.style.display = "none";
   };
 </script>
