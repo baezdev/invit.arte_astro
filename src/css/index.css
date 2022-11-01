@@ -659,12 +659,12 @@ button {
   outline: none;
 }
 
-.form__input-container-select{
+.form__input-container-select {
   width: 100%;
   display: block;
 }
 
-.form__input-container-select{
+.form__input-container-select {
   border-bottom: 2px solid var(--gray);
 }
 
@@ -675,11 +675,11 @@ select {
   width: 100%;
 }
 
-select:focus{
+select:focus {
   outline: none;
 }
 
-.message-logged{
+.message-logged {
   font-size: 4rem;
   font-weight: 700;
   line-height: 1.5;
@@ -3210,8 +3210,15 @@ button {
 }
 
 .create__seccion-image {
-  width: 550px;
-  animation: up-and-down 1s infinite;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .create__seccion-image {
+    display: block;
+    width: 550px;
+    animation: up-and-down 1s infinite;
+  }
 }
 
 /***** Animaciones *****/
