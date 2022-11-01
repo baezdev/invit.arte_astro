@@ -54,14 +54,10 @@ export const ContactForm = () => {
   );
 
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(loading);
     getUserLogged().then((data) => setUser(data));
-    setLoading(false);
   }, []);
-  console.log(loading);
 
   const serviceId = "service_l7c1mvj";
   const templateId = "template_7l5lpfw";
