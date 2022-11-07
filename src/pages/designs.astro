@@ -38,6 +38,18 @@ const templates = [
 <Layout title="Invit💛Arte (Diseños)">
   <SubPageLayout title="Plantillas Disponibles">
     <main>
+      <div>
+        <li class="navbar__menu-search">
+          <input
+            type="search"
+            id="searchBar"
+            placeholder="Busca tu plantilla"
+          />
+          <button id="searchButton">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </li>
+      </div>
       <section class="sTarjetas">
         <div class="contenedor">
           <div class="contenedorP contPlantillas">
@@ -78,4 +90,29 @@ const templates = [
     imagenesLight.classList.toggle("showImage");
     flecha.style.display = "none";
   };
+
+
+  //Barra de búsqueda
+  const barra = document.querySelector("#searchBar"); 
+  barra.addEventListener("keyup", (e) => {
+    var busqueda = e.target.value.toLowerCase();
+
+    const contTarjetas = document.querySelector(".contPlantillas");
+    const tarjeta = document.querySelectorAll(".fondo");
+    const nomTarjeta = contTarjetas.getElementsByTagName("h2");
+
+    for (var i = 0; i < nomTarjeta.length; i++) {
+      let comparar = tarjeta[i].getElementsByTagName("h2")[0];
+
+      if (comparar) {
+        let textValue = comparar.textContent || comparar.innerHTML;
+
+        if (textValue.toLowerCase().indexOf(busqueda) > -1) {
+          tarjeta[i].style.display = "";
+        } else {
+          tarjeta[i].style.display = "none";
+        }
+      }
+    }
+  });
 </script>
