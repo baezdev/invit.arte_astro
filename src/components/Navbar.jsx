@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { getUserLogged } from "../helpers/auth/getUserLogged";
+import { useStore } from "@nanostores/react";
+
+import { userLog } from "../helpers/auth/getUserLogged";
 import { signOut } from "../helpers/auth/signOut";
 
 const Navbar = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
+  const [user, setUser] = useState(null);
+
   const links = [
     {
       text: "contacto",
@@ -27,11 +31,11 @@ const Navbar = () => {
     },
   ];
 
-  const [user, setUser] = useState(null);
+  const $user = useStore(userLog);
 
   useEffect(() => {
-    getUserLogged().then((data) => setUser(data));
-  }, []);
+    setUser($user);
+  }, [$user]);
 
   return (
     <nav className="navbar">
@@ -48,12 +52,12 @@ const Navbar = () => {
       </button>
       <div className={`navbar__menu ${menuIsVisible && "showMenu"}`}>
         <ul className="navbar__menu-container">
-          <li className="navbar__menu-search">
+          {/* <li className="navbar__menu-search">
             <input type="search" placeholder="Buscar en Invit-Arte" />
             <button>
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
-          </li>
+          </li> */}
           <li>
             {user ? (
               <button onClick={signOut}>

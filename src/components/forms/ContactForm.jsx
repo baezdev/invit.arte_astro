@@ -4,11 +4,12 @@ import Swal from "sweetalert2";
 import validator from "validator";
 import emailjs from "@emailjs/browser";
 
-import { getUserLogged } from "../../helpers/auth/getUserLogged";
+import { userLog } from "../../helpers/auth/getUserLogged";
 import { useForm } from "../../hooks/useForm";
 
 import { FormButton } from "./FormButton";
 import { FormInput } from "./FormInput";
+import { useStore } from "@nanostores/react";
 
 const initialForms = {
   name: "",
@@ -55,9 +56,11 @@ export const ContactForm = () => {
 
   const [user, setUser] = useState(null);
 
+  const $user = useStore(userLog);
+
   useEffect(() => {
-    getUserLogged().then((data) => setUser(data));
-  }, []);
+    setUser($user);
+  }, [$user]);
 
   const serviceId = "service_l7c1mvj";
   const templateId = "template_7l5lpfw";
