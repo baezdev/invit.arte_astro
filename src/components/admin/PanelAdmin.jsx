@@ -10,10 +10,10 @@ export const PanelAdmin = () => {
     setUser($user);
   }, [$user]);
 
-  if (user?.id !== "84bfe9c6-a464-42b5-b251-d0620173985e") {
-    /* return <h1>404</h1>; */
+  /* if (user?.id !== "84bfe9c6-a464-42b5-b251-d0620173985e") {
+    return <h1>404</h1>;
     window.location.href = "/"
-  }
+  } */
 
   return <div>PanelAdmin</div>;
 };
