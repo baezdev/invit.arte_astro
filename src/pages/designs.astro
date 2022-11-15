@@ -1,38 +1,11 @@
 ---
 import TemplateCard from "../components/TemplateCard.astro";
+import { supabase } from "../config/supabase.config";
 import Layout from "../layouts/Layout.astro";
 import SubPageLayout from "../layouts/SubPageLayout.astro";
 
-const templates = [
-  {
-    title: "Baby Shower",
-    img: "/images/baby.webp",
-  },
-  {
-    title: "Bautizo",
-    img: "/images/bautizo.webp",
-  },
-  {
-    title: "Boda",
-    img: "/images/boda.webp",
-  },
-  {
-    title: "Cumpleaños",
-    img: "/images/cumple.webp",
-  },
-  {
-    title: "Despedida de solter@",
-    img: "/images/despedida.webp",
-  },
-  {
-    title: "Graduación",
-    img: "/images/graduacion.webp",
-  },
-  {
-    title: "XV años",
-    img: "/images/xv.webp",
-  },
-];
+const { data } = await supabase.from("designs").select().order("name");
+const templates = data;
 ---
 
 <Layout title="Invit💛Arte (Diseños)">
