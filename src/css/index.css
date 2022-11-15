@@ -669,14 +669,22 @@ button {
 }
 
 select {
+  appearance: none;
   border: none;
   font-size: 2rem;
   font-weight: 700;
   width: 100%;
+  text-transform: capitalize;
+  background: transparent;
 }
 
 select:focus {
   outline: none;
+}
+
+option {
+  text-transform: capitalize;
+  font-weight: 600;
 }
 
 .message-logged {
@@ -692,6 +700,7 @@ select:focus {
 }
 
 .form__input.form__input-error input,
+.form__input.form__input-error select,
 .form__input-statusIcon {
   color: #d23131;
 }
