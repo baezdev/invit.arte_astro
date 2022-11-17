@@ -59,10 +59,22 @@ img {
   height: 100vh;
 }
 
+.w-40 {
+  width: 40%;
+}
+
 .center__section {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.center__section-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 .btn {
@@ -89,17 +101,20 @@ img {
   color: #feedaa;
 }
 
-.button {
+.button__link {
   background: transparent;
   border-radius: 8px;
-  padding: 1.4rem 1rem;
-  font-size: 1.8rem;
+  padding: 1.4rem 4rem;
+  font-size: 3rem;
   font-weight: 800;
-  width: 100%;
+  width: max-content;
   border: none;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  border: 3px solid var(--mint);
+  background: var(--darkGreen);
+  color: var(--yellow);
 }
 
 .button__gradient {
@@ -1110,6 +1125,7 @@ option {
 .button__select img {
   width: 20rem;
   margin: 0 auto;
+  aspect-ratio: 1/1;
 }
 
 .button__select-container:hover {
