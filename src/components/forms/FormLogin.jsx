@@ -81,6 +81,12 @@ export const FormLogin = () => {
         customClass: "fs-lg",
       }).then((res) => {
         if (res.isConfirmed) {
+          if (form.email === "admin@gmail.com") {
+            setTimeout(() => {
+              window.location.href = "/admin";
+            }, 500);
+            return;
+          }
           setTimeout(() => {
             window.location.href = "/";
           }, 500);
