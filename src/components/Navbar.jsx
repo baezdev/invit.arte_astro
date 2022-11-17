@@ -52,12 +52,6 @@ const Navbar = () => {
       </button>
       <div className={`navbar__menu ${menuIsVisible && "showMenu"}`}>
         <ul className="navbar__menu-container">
-          {/* <li className="navbar__menu-search">
-            <input type="search" placeholder="Buscar en Invit-Arte" />
-            <button>
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </li> */}
           <li>
             {user ? (
               <button onClick={signOut}>
@@ -68,6 +62,11 @@ const Navbar = () => {
               <a href="/login/">acceder</a>
             )}
           </li>
+          {user?.email === "admin@gmail.com" && (
+            <li>
+              <a href="/admin">Administrador</a>
+            </li>
+          )}
           {links.map(({ text, url }) => (
             <li key={text}>
               <a href={url}>{text}</a>
