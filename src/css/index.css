@@ -75,6 +75,7 @@ img {
   justify-content: center;
   align-items: center;
   gap: 50px;
+  height: 100%;
 }
 
 .btn {
@@ -270,6 +271,10 @@ img {
   outline: none !important;
   box-shadow: none !important;
   border-radius: 6px !important;
+}
+
+.mt__100 {
+  margin-top: 100px;
 }
 
 /***** Navbar *****/
@@ -1571,21 +1576,21 @@ option {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin: 2.5rem auto;
   }
 
   .contact__container {
     width: 40%;
     margin: 0 auto;
-    margin-bottom: 6rem;
+    /* margin-bottom: 6rem; */
   }
 }
 
 .contact__container {
   width: 100%;
-  margin: 0 auto;
-  margin-bottom: 6rem;
+  margin: 3rem auto;
+  /* margin-bottom: 6rem; */
 }
 
 .contact__button {
@@ -1719,6 +1724,92 @@ option {
   right: 66px;
   transform-origin: center bottom;
   animation: fillBaloon 1s ease-in-out infinite alternate;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.grid__item {
+  background: linear-gradient(90rad, var(--mint), var(--yellow));
+  padding: 3px;
+  border-radius: 6px;
+  height: 100%;
+}
+
+.grid__item-content {
+  background: var(--darkGreen);
+  border-radius: 4px;
+  height: 100%;
+  padding: 15px;
+  color: var(--white);
+}
+
+.item__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.item__title span {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.item__title p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+.item__content p {
+  margin: 0;
+}
+
+.item__content div {
+  margin-bottom: 12px;
+}
+.item__content div span {
+  font-weight: 600;
+}
+
+.item__content-dates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item__footer {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.item__footer button {
+  color: #000;
+  font-size: 18px;
+  padding: 0;
+  border: none;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  /*   border-bottom: 2px solid ; */
+}
+
+.item__footer button i {
+  font-size: 12px;
+}
+
+.item__footer button.item__button-warning {
+  color: var(--mint);
+}
+
+.item__footer button.item__button-danger {
+  color: var(--yellow);
 }
 
 @keyframes fillBaloon {
