@@ -6,10 +6,11 @@ import emailjs from "@emailjs/browser";
 
 import { userLog } from "../../helpers/auth/getUserLogged";
 import { useForm } from "../../hooks/useForm";
+import { useStore } from "@nanostores/react";
 
 import { FormButton } from "./FormButton";
 import { FormInput } from "./FormInput";
-import { useStore } from "@nanostores/react";
+import { LoadingPage } from "../LoadingPage";
 
 const initialForms = {
   name: "",
@@ -54,6 +55,7 @@ export const ContactForm = () => {
     validationsForm
   );
 
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   const $user = useStore(userLog);
@@ -131,6 +133,14 @@ export const ContactForm = () => {
       )
       .catch((err) => console.log(err));
   };
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="form">

@@ -1,5 +1,5 @@
-import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
+import { useStore } from "@nanostores/react";
 
 import { userLog } from "../../helpers/auth/getUserLogged";
 import { LoadingPage } from "../LoadingPage";
@@ -21,7 +21,7 @@ export const PanelAdmin = () => {
   }, 1000);
 
   if (loading) {
-    return <LoadingPage />;
+    return <LoadingPage complete/>;
   }
 
   if (user?.id !== "84bfe9c6-a464-42b5-b251-d0620173985e" || !user) {
