@@ -91,6 +91,10 @@ export const FormRegister = () => {
         icon: "success",
         text: "Te has registrado correctamente",
         customClass: "fs-lg",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          window.location.href = "/login/";
+        }
       });
     });
   };
