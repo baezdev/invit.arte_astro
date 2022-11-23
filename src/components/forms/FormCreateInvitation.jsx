@@ -33,14 +33,20 @@ const validationsForm = (form, e) => {
   if (validator.isEmpty(form.name)) {
     errors.name = "El nombre del evento es obligatorio";
     validFields.name = false;
-  } else {
+  }else if (!validator.isAlpha(form.name, 'es-ES')) {
+    errors.name = "El nombre del evento debe contener solo letras";
+    validFields.name = false;
+  }	else{
     validFields.name = true;
   }
-
+  
   if (validator.isEmpty(form.date)) {
     errors.date = "La fecha es obligatoria";
     validFields.date = false;
-  } else {
+  } else if (!validator.isAfter(form.date)) {
+    errors.date = "La fecha debe ser superior";
+    validFields.date = false;
+  }	else{
     validFields.date = true;
   }
 
@@ -54,7 +60,10 @@ const validationsForm = (form, e) => {
   if (validator.isEmpty(form.direction)) {
     errors.direction = "La direccion es obligatoria";
     validFields.direction = false;
-  } else {
+  }else if (!validator.isAlphanumeric(form.direction, 'es-ES')) {
+    errors.direction = "La direccion solo puede contener letras y numeros";
+    validFields.direction = false;
+  }	else{
     validFields.direction = true;
   }
 
