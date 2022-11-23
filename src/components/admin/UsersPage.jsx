@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
 
 import { userLog } from "../../helpers/auth/getUserLogged";
-import { supabaseAdm } from "../../config/supabase.config";
+import { getUsers } from "../../helpers/admin/getUsers";
 
 import { LoadingPage } from "../LoadingPage";
 import { Page404 } from "../Page404";
 import { UserCard } from "./UserCard";
+import { ButtonCreateUser } from "./ButtonCreateUser";
 
 export const UsersPage = () => {
   const [loading, setLoading] = useState(true);
@@ -21,9 +22,7 @@ export const UsersPage = () => {
   }, [$user]);
 
   useEffect(() => {
-    supabaseAdm.auth.admin
-      .listUsers()
-      .then(({ data }) => setListUsers(data.users));
+    getUsers().then((data) => setListUsers(data));
   }, []);
 
   setTimeout(() => {
@@ -39,12 +38,17 @@ export const UsersPage = () => {
   }
 
   return (
-    <section className="mt__100">
+    <section className="container mt__100 margin__bottom-lgg">
       <h2 className="subtitle">Usuarios</h2>
-      <div className="container grid">
-        {listUsers.map((user, i) => (
-          <UserCard key={user.id} {...user} numUser={i} />
-        ))}
+      <div className="options__buttons">
+        <ButtonCreateUser />
+      </div>
+      <div className="grid">
+        {listUsers
+          .filter((user) => user.email !== "admin@gmail.com")
+          .map((user, i) => (
+            <UserCard key={user.id} {...user} numUser={i} />
+          ))}
       </div>
     </section>
   );
