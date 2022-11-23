@@ -4,11 +4,13 @@ import Swal from "sweetalert2";
 import validator from "validator";
 import emailjs from "@emailjs/browser";
 
-import { getUserLogged } from "../../helpers/auth/getUserLogged";
+import { userLog } from "../../helpers/auth/getUserLogged";
 import { useForm } from "../../hooks/useForm";
+import { useStore } from "@nanostores/react";
 
 import { FormButton } from "./FormButton";
 import { FormInput } from "./FormInput";
+import { LoadingPage } from "../LoadingPage";
 
 const initialForms = {
   name: "",
@@ -53,15 +55,14 @@ export const ContactForm = () => {
     validationsForm
   );
 
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  const $user = useStore(userLog);
 
   useEffect(() => {
-    console.log(loading);
-    getUserLogged().then((data) => setUser(data));
-    setLoading(false);
-  }, []);
-  console.log(loading);
+    setUser($user);
+  }, [$user]);
 
   const serviceId = "service_l7c1mvj";
   const templateId = "template_7l5lpfw";
@@ -132,6 +133,14 @@ export const ContactForm = () => {
       )
       .catch((err) => console.log(err));
   };
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="form">

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+import { getDate } from "../../helpers/getDate";
 
 export const FormInput = ({
   type,
@@ -11,6 +13,9 @@ export const FormInput = ({
   error = "",
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+
+  //La usamos para validar evitar que se puede selecciona fechas que ya pasaron
+  const date = getDate();
 
   if (name === "password") {
     const showPassword = () => {
@@ -57,6 +62,7 @@ export const FormInput = ({
           onKeyUp={eventValidation}
           required
           value={value}
+          min={type === "date" ? date : undefined}
         />
         <span className="form__input-status">
           {error !== "" && <i className="fa-regular fa-circle-xmark"></i>}
