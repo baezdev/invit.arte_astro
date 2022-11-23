@@ -1,13 +1,13 @@
 ---
-const { title, img, id } = Astro.props;
+const { name, image, id } = Astro.props;
 ---
 
 <div class="fondo">
   <article class="tarjetaP tarjetaS">
     <header class="cabeceraP">
-      <img src={img} alt={title} class="plantilla" />
+      <img src={image} alt={name} class="plantilla" />
     </header>
-    <h2 class="costo">{title}</h2>
+    <h2 class="costo">{name}</h2>
     <a href={`/create-invitation?id=${id}`} class="button boton flex botonP">
       Usa esta plantilla<i class="fa-solid fa-arrow-right"></i>
     </a>
