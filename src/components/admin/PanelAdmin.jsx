@@ -1,17 +1,28 @@
-import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
+import { useStore } from "@nanostores/react";
 
 import { userLog } from "../../helpers/auth/getUserLogged";
+import { LoadingPage } from "../LoadingPage";
 
 import { Page404 } from "../Page404";
 
 export const PanelAdmin = () => {
-  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const [user, setUser] = useState({});
   const $user = useStore(userLog);
 
   useEffect(() => {
     setUser($user);
   }, [$user]);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+
+  if (loading) {
+    return <LoadingPage complete/>;
+  }
 
   if (user?.id !== "84bfe9c6-a464-42b5-b251-d0620173985e" || !user) {
     return <Page404 />;
