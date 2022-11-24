@@ -1414,14 +1414,14 @@ option {
 /*plantillas*/
 
 .tarjetaS {
-  height: 500px;
+  height: 740px;
 }
 
 .plantilla {
   border-radius: 10px;
   border: 3px solid var(--mint);
   cursor: pointer;
-  height: 262px;
+  height: 500px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -1456,12 +1456,13 @@ option {
 
 .agregarImg {
   object-fit: cover;
-  width: 50%;
-  height: 60%;
+  width: 30%;
+  height: fit-content;
   margin-top: 10px;
   border-radius: 10px;
   transition: transform 0.3s 0.2s;
   transform: scale(0);
+  z-index: 100;
 }
 
 .close {
