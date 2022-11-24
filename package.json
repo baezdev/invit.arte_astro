@@ -17,11 +17,13 @@
     "@nanostores/react": "^0.4.0",
     "@supabase/supabase-js": "^2.0.4",
     "astro": "^1.6.0",
+    "canvas-confetti": "^1.6.0",
     "nanostores": "^0.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "sweetalert2": "^11.6.4",
+    "uuid": "^9.0.0",
     "validator": "^13.7.0"
   }
 }

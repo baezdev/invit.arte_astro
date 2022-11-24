@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
 import Swal from "sweetalert2";
 import validator from "validator";
+import confetti from "canvas-confetti";
+import { v4 as uuidv4 } from "uuid";
 
 import { userLog } from "../../helpers/auth/getUserLogged";
 import { uploadInvitationData } from "../../helpers/invitations/uploadInvitationData";
@@ -36,7 +38,7 @@ const validationsForm = (form, e) => {
   if (validator.isEmpty(form.name)) {
     errors.name = "El nombre del evento es obligatorio";
     validFields.name = false;
-  } else if (!validator.isAlpha(form.name, "es-ES")) {
+  } else if (!validator.isAlpha(form.name, "es-ES", { ignore: "-'s" })) {
     errors.name = "El nombre del evento debe contener solo letras";
     validFields.name = false;
   } else {
@@ -121,22 +123,11 @@ const FormCreateInvitation = () => {
       return;
     }
 
-    /* Swal.fire({
-      title: "Próximamente",
-      icon: "success",
-      text: "Crearemos tu invitación",
-      customClass: "fs-lg",
-    }).then((res) => {
-      if (res.isConfirmed) {
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 500);
-      }
-    }); */
-
     const designId = window.location.href.split("=")[1];
+    const uuid = uuidv4();
 
     uploadInvitationData({
+      id: uuid,
       eventName: form.name,
       date: form.date,
       time: form.time,
@@ -144,6 +135,23 @@ const FormCreateInvitation = () => {
       dressCode: form.dressCode,
       designId,
       userId: user.id,
+    });
+
+    confetti({
+      particleCount: 150,
+    });
+
+    Swal.fire({
+      title: "Felicidades",
+      icon: "success",
+      text: "Su invitacion esta lista",
+      customClass: "fs-lg",
+    }).then((res) => {
+      if (res.isConfirmed) {
+        setTimeout(() => {
+          window.location.href = `/invitations/${uuid}`;
+        }, 500);
+      }
     });
   };
 
