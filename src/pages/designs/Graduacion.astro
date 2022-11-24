@@ -1,0 +1,44 @@
+---
+import "../../css/invitations/design6.css";
+
+const { eventName, date, address, time, dressCode } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graduación</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="contents">
+        <div class="one">
+          <h2 class="titulo1">Están invitados a la fiesta de graduación de:</h2>
+          <h1 class="titulo2">{eventName}</h1>
+        </div>
+        <div class="two">
+          <h2>Esperamos su compañia</h2>
+          <h2>en un acontecimiento tan importante</h2>
+        </div>
+        <div class="three">
+          <h1>{date.split("-")[2]},</h1>
+          <h1>{date.split("-")[1]}, {date.split("-")[0]}</h1>
+          <h2>{time}</h2>
+        </div>
+        <div class="four">
+          <!-- <h1>Lugar cualquiera</h1> -->
+          <h2>{address}</h2><br>
+          <h2>{dressCode}</h2>
+          <!-- <h2>C.P. 1234</h2> -->
+        </div>
+        <div class="five">
+          <h1><br /><br /><br />Confirmar asistencia<br /><br /><br /></h1>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

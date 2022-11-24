@@ -1,0 +1,35 @@
+---
+import { supabase } from "../../config/supabase.config";
+
+import InvitationLayout from "../../layouts/InvitationLayout.astro";
+import { InvitationContent } from "../../components/invitation/InvitationContent.jsx";
+
+import Graduacion from "../designs/Graduacion.astro";
+import Bautizo from "../designs/Bautizo.astro";
+import Despedida from "../designs/Despedida.astro";
+
+export async function getStaticPaths() {
+  const { data } = await supabase.from("invitations").select();
+
+  return data.map((infoInvitation) => {
+    return {
+      params: { invitation: infoInvitation.id },
+      props: { ...infoInvitation },
+    };
+  });
+}
+
+const { eventName, designId } = Astro.props;
+
+const events = {
+  2: Bautizo,
+  5: Despedida,
+  6: Graduacion,
+};
+
+const Component = events[designId];
+---
+
+<InvitationLayout title={eventName} designId={designId}>
+  <Component {...Astro.props} />
+</InvitationLayout>

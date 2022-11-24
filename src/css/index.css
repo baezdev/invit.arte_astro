@@ -430,10 +430,12 @@ button {
 }
 
 .navbar__menu-search {
+  padding-top: 25px;
   display: flex;
   gap: 1rem;
+  margin: 0 auto;
   justify-content: center;
-  width: 100%;
+  width: 80%;
 }
 
 .navbar__menu-search input {
@@ -443,7 +445,7 @@ button {
   border-radius: 6px;
   border: 3px solid var(--mint);
   background: transparent;
-  color: var(--white);
+  color: var(--black);
   width: 85%;
 }
 
@@ -459,7 +461,7 @@ button {
   border-radius: 6px;
   color: var(--darkGreen);
   background: var(--yellow);
-  width: 15%;
+  width: 50px;
   text-align: center;
 }
 
@@ -1412,14 +1414,14 @@ option {
 /*plantillas*/
 
 .tarjetaS {
-  height: 500px;
+  height: 740px;
 }
 
 .plantilla {
   border-radius: 10px;
   border: 3px solid var(--mint);
   cursor: pointer;
-  height: 262px;
+  height: 500px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -1454,12 +1456,13 @@ option {
 
 .agregarImg {
   object-fit: cover;
-  width: 50%;
-  height: 60%;
+  width: 30%;
+  height: fit-content;
   margin-top: 10px;
   border-radius: 10px;
   transition: transform 0.3s 0.2s;
   transform: scale(0);
+  z-index: 100;
 }
 
 .close {
