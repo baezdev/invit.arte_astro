@@ -36,12 +36,18 @@ const validationsForm = (form, e) => {
   if (validator.isEmpty(form.name)) {
     errors.name = "El nombre del evento es obligatorio";
     validFields.name = false;
+  } else if (!validator.isAlpha(form.name, "es-ES")) {
+    errors.name = "El nombre del evento debe contener solo letras";
+    validFields.name = false;
   } else {
     validFields.name = true;
   }
 
   if (validator.isEmpty(form.date)) {
     errors.date = "La fecha es obligatoria";
+    validFields.date = false;
+  } else if (!validator.isAfter(form.date)) {
+    errors.date = "La fecha debe ser superior";
     validFields.date = false;
   } else {
     validFields.date = true;
