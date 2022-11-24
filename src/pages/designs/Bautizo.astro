@@ -1,0 +1,31 @@
+---
+import "../../css/invitations/design2.css";
+
+const { eventName, date, address, time, dressCode } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bautizo.css" />
+
+    <title>Bautizo</title>
+  </head>
+
+  <body>
+    <section class="card">
+      <div class="card__body">
+        <img
+          src="https://res.cloudinary.com/dkv3luev6/image/upload/v1669274450/IcoBaut_tnltzj.png"
+        />
+        <p class="std">Bautizo de {eventName}</p><br />
+        <p class="info">{date}</p>
+        <p class="date">{address}</p><br />
+        <p class="names">{dressCode}</p>
+      </div>
+    </section>
+  </body>
+</html>

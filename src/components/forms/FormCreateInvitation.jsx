@@ -1,12 +1,15 @@
-import { useStore } from "@nanostores/react";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 
+import { useStore } from "@nanostores/react";
+import Swal from "sweetalert2";
 import validator from "validator";
 
-import { getUserLogged, userLog } from "../../helpers/auth/getUserLogged";
+import { userLog } from "../../helpers/auth/getUserLogged";
+import { uploadInvitationData } from "../../helpers/invitations/uploadInvitationData";
+
 import { useForm } from "../../hooks/useForm";
 
+import { LoadingPage } from "../LoadingPage";
 import { FormButton } from "./FormButton";
 import { FormInput } from "./FormInput";
 import { FormSelect } from "./FormSelect";
@@ -86,6 +89,7 @@ const FormCreateInvitation = () => {
   );
 
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const $user = useStore(userLog);
 
@@ -111,7 +115,7 @@ const FormCreateInvitation = () => {
       return;
     }
 
-    Swal.fire({
+    /* Swal.fire({
       title: "Próximamente",
       icon: "success",
       text: "Crearemos tu invitación",
@@ -122,8 +126,28 @@ const FormCreateInvitation = () => {
           window.location.href = "/";
         }, 500);
       }
+    }); */
+
+    const designId = window.location.href.split("=")[1];
+
+    uploadInvitationData({
+      eventName: form.name,
+      date: form.date,
+      time: form.time,
+      address: form.direction,
+      dressCode: form.dressCode,
+      designId,
+      userId: user.id,
     });
   };
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   if (!user) {
     return (
